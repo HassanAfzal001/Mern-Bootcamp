@@ -9,10 +9,10 @@ const addClient = (body) => {
     });
 };
 
-const updateClient = (body) =>{
-    const query = {_id: body._id};
+const updateClient = (body) => {
+    const query = req.params.id;
     return clientModel.findOneAndUpdate(query, body, {
-        new:true
+      new: true  
     });
 };
 

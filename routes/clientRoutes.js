@@ -26,9 +26,9 @@ router.post('/', async function(req, res, next) {
   }
 });
 
- router.put('/', async function(req, res, next){
+ router.put('/:id', async function(req, res, next){
   const body = req.body;
-  if (!body._id) {
+  if (!req.params.id) {
     return res.status(400).send({ message: "_id is required"});
   }
   try {

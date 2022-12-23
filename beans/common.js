@@ -42,19 +42,16 @@ const signup = async(body) => {
         case 'client':
             if(!body.data.firstName){
                 return Promise.reject({error:"First name is required"});
-                break;
             }
             if(!body.data.lastName){
                 return Promise.reject({error:"Last name is required"});
-                break;
             }
             if(!body.data.age){
                 return Promise.reject({error:"Age is required"});
-                break;
             }
-            if(!body.data.dob && dob === Date){
+            if(!body.data.dob){
                 return Promise.reject({error:"Date of birth is required"});
-                break;
+                
             }
             //apply validation of client;
             result = await clientController.addClient(body.data);
@@ -75,7 +72,7 @@ const signup = async(body) => {
     
     const user = await usersController.addUser(userJson);
     return user;
-    // Add email here if we there is requirement to do email if user added, for this we have to setup controller etc of email
+    // Add email here if there is requirement to do email if user added, for this we have to setup controller etc of email
     
 } catch(exp) {
     return Promise.reject({error:exp});
