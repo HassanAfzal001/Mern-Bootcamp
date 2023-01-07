@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 const authMiddleware = require('./middleware/authMiddleware');
 const passport = require('passport');
 const { Strategy } = require('passport-local');
+// importing cors - Cross Origin Resource Sharing
+const inputMiddleware = require('./middleware/inputMiddleware');
+
 
 // var indexRouter = require('./routes/index');
 const {
@@ -44,6 +47,7 @@ passport.use(new Strategy(
 ));
 
 //actual routes
+app.use(inputMiddleware.handleOptions);
 app.post('/signup', authMiddleware.userSignUp);
 app.post('/login',
   passport.initialize(),
